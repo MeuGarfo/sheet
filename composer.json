@@ -7,5 +7,8 @@
         "psr-4": {
             "Basic\\": "/src"
         }
+    },
+    "require": {
+        "box/spout": "^2.8@dev"
     }
 }
