@@ -1,6 +1,6 @@
 {
     "name": "basic/sheet",
-    "description": "Sistema básico para leitura de planilhas",
+    "description": "Sistema b\u00e1sico para manipula\u00e7\u00e3o de planilhas",
     "minimum-stability": "dev",
     "license": "MIT",
     "autoload": {

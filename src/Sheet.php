@@ -28,17 +28,16 @@ class Sheet{
         return $fixed_sheet;
     }
     function to_array($sheet_name){
-        //le a lista
         $ext=pathinfo($sheet_name,PATHINFO_EXTENSION);
         switch($ext){
             case 'csv':
-            $reader = ReaderFactory::create(Type::CSV); // for CSV files
+            $reader = ReaderFactory::create(Type::CSV); 
             break;
             case 'ods':
-            $reader = ReaderFactory::create(Type::ODS); // for ODS files
+            $reader = ReaderFactory::create(Type::ODS);
             break;
             case 'xlsx':
-            $reader = ReaderFactory::create(Type::XLSX); // for XLSX files
+            $reader = ReaderFactory::create(Type::XLSX);
             break;
         }
         $reader->open($sheet_name);
@@ -50,11 +49,32 @@ class Sheet{
         }
         $reader->close();
         $lists=false;
-        //adiciona letras nas colunas
         foreach ($list['lists'] as $key => $value) {
             $lists[$key]=$this->sheet_to_alpha($value);
         }
-        //retorna a lista
         return $lists;
+    }
+    function to_sheet($array,$sheet_name){
+        $ext=pathinfo($sheet_name,PATHINFO_EXTENSION);
+        switch($ext){
+            case 'csv':
+            $writer = WriterFactory::create(Type::CSV);
+            break;
+            case 'ods':
+            $writer = WriterFactory::create(Type::ODS);
+            break;
+            case 'xlsx':
+            $writer = WriterFactory::create(Type::XLSX);
+            break;
+        }
+        @$writer->openToFile($sheet_name);
+        foreach($data as $row){
+            $writer->addRow($row);
+        }
+        if(is_null($writer->close())){
+        	return true;
+        }else{
+        	return false;
+        }
     }
 }
