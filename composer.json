@@ -9,6 +9,6 @@
         }
     },
     "require": {
-        "box/spout": "^2.8@dev"
+        "box/spout": "v2.7.3"
     }
 }

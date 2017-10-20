@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "2cc8934ec2cde7e68dfabde5ed755cfc",
+    "content-hash": "0ee26221203ac59588c7dee042fd627c",
     "packages": [
         {
             "name": "box/spout",
-            "version": "dev-master",
+            "version": "v2.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/box/spout.git",
@@ -72,15 +72,13 @@
                 "write",
                 "xlsx"
             ],
-            "time": "2017-09-25 19:44:35"
+            "time": "2017-09-25T19:44:35+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "box/spout": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
