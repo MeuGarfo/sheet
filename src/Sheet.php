@@ -19,7 +19,7 @@ class Sheet
      * @param  string  $a Letra
      * @return integer    Número
      */
-    public function alphaToNum(string $a):integer
+    public function alphaToNum(string $a)
     {
         $l = strlen($a);
         $n = 0;
@@ -33,7 +33,7 @@ class Sheet
      * @param  integer $n Número
      * @return string     Letra
      */
-    public function numToAlpha(integer $n):string
+    public function numToAlpha(integer $n)
     {
         for ($r = ""; $n >= 0; $n = intval($n / 26) - 1) {
             $r = chr($n%26 + 0x61) . $r;
@@ -45,7 +45,7 @@ class Sheet
      * @param  array $sheet Array com chaves numéricas
      * @return array        Array com chaves alfabéticas
      */
-    public function sheetToAlpha(array $sheet):array
+    public function sheetToAlpha(array $sheet)
     {
         $fixed_sheet=false;
         foreach ($sheet as $key=>$value) {
@@ -63,7 +63,7 @@ class Sheet
      * @param  string $sheet_name Planilha
      * @return array              Array
      */
-    public function toArray(string $sheet_name):array
+    public function toArray(string $sheet_name)
     {
         $ext=pathinfo($sheet_name, PATHINFO_EXTENSION);
         switch ($ext) {
@@ -97,7 +97,7 @@ class Sheet
      * @param  string $sheet_name Nome da planilha
      * @return bool               Retorna true ou false
      */
-    public function toSheet(array $array, string $sheet_name):bool
+    public function toSheet(array $array, string $sheet_name)
     {
         $ext=pathinfo($sheet_name, PATHINFO_EXTENSION);
         switch ($ext) {
