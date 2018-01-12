@@ -10,16 +10,14 @@ use Box\Spout\Reader\ReaderFactory;
 use Box\Spout\Common\Type;
 
 /**
- * Classe Sheet
- */
+* Classe Sheet
+*/
 class Sheet
 {
     /**
-     * Converte letras para números
-     * @param  string  $a Letra
-     * @return integer    Número
-     */
-    public function alphaToNum(string $a)
+    * Converte letras para números
+    */
+    public function alphaToNum($a)
     {
         $l = strlen($a);
         $n = 0;
@@ -29,11 +27,9 @@ class Sheet
         return $n-1;
     }
     /**
-     * Converte número para letra
-     * @param  integer $n Número
-     * @return string     Letra
-     */
-    public function numToAlpha(integer $n)
+    * Converte número para letra
+    */
+    public function numToAlpha($n)
     {
         for ($r = ""; $n >= 0; $n = intval($n / 26) - 1) {
             $r = chr($n%26 + 0x61) . $r;
@@ -41,15 +37,13 @@ class Sheet
         return $r;
     }
     /**
-     * Converte as chaves numéricas da planilha para chaves alfabéticas
-     * @param  array $sheet Array com chaves numéricas
-     * @return array        Array com chaves alfabéticas
-     */
-    public function sheetToAlpha(array $sheet)
+    * Converte as chaves numéricas da planilha para chaves alfabéticas
+    */
+    public function sheetToAlpha($sheet)
     {
         $fixed_sheet=false;
-        foreach ($sheet as $key=>$value) {
-            foreach ($value as $value_key=>$value_value) {
+        foreach ($sheet as $key => $value) {
+            foreach ($value as $value_key => $value_value) {
                 unset($value[$value_key]);
                 $value[$this->numToAlpha($value_key)]=$value_value;
             }
@@ -59,23 +53,21 @@ class Sheet
         return $fixed_sheet;
     }
     /**
-     * Converte uma planilha para array
-     * @param  string $sheet_name Planilha
-     * @return array              Array
-     */
-    public function toArray(string $sheet_name)
+    * Converte uma planilha para array
+    */
+    public function toArray($sheet_name)
     {
         $ext=pathinfo($sheet_name, PATHINFO_EXTENSION);
         switch ($ext) {
             case 'csv':
-            $reader = ReaderFactory::create(Type::CSV);
-            break;
+                $reader = ReaderFactory::create(Type::CSV);
+                break;
             case 'ods':
-            $reader = ReaderFactory::create(Type::ODS);
-            break;
+                $reader = ReaderFactory::create(Type::ODS);
+                break;
             case 'xlsx':
-            $reader = ReaderFactory::create(Type::XLSX);
-            break;
+                $reader = ReaderFactory::create(Type::XLSX);
+                break;
         }
         $reader->open($sheet_name);
         foreach ($reader->getSheetIterator() as $sheet) {
@@ -92,24 +84,21 @@ class Sheet
         return $lists;
     }
     /**
-     * Converte um array de dadospara uma planilha
-     * @param  array  $array      Array de dados
-     * @param  string $sheet_name Nome da planilha
-     * @return bool               Retorna true ou false
-     */
-    public function toSheet(array $array, string $sheet_name)
+    * Converte um array de dados para uma planilha
+    */
+    public function toSheet($array, $sheet_name)
     {
         $ext=pathinfo($sheet_name, PATHINFO_EXTENSION);
         switch ($ext) {
             case 'csv':
-            $writer = WriterFactory::create(Type::CSV);
-            break;
+                $writer = WriterFactory::create(Type::CSV);
+                break;
             case 'ods':
-            $writer = WriterFactory::create(Type::ODS);
-            break;
+                $writer = WriterFactory::create(Type::ODS);
+                break;
             case 'xlsx':
-            $writer = WriterFactory::create(Type::XLSX);
-            break;
+                $writer = WriterFactory::create(Type::XLSX);
+                break;
         }
         @$writer->openToFile($sheet_name);
         foreach ($data as $row) {
