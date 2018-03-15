@@ -55,9 +55,11 @@ class Sheet
     /**
     * Converte uma planilha para array
     */
-    public function toArray($sheet_name)
+    public function toArray($sheet_name,$ext=false)
     {
-        $ext=pathinfo($sheet_name, PATHINFO_EXTENSION);
+        if(!$ext){
+            $ext=pathinfo($sheet_name, PATHINFO_EXTENSION);
+        }
         switch ($ext) {
             case 'csv':
                 $reader = ReaderFactory::create(Type::CSV);
