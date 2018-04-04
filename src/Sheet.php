@@ -83,7 +83,11 @@ class Sheet
         foreach ($list['lists'] as $key => $value) {
             $lists[$key]=$this->sheetToAlpha($value);
         }
-        return $lists;
+        if($ext=="csv"){
+            return $lists[""];
+        }else{
+            return $lists;
+        }
     }
     /**
     * Converte um array de dados para uma planilha
