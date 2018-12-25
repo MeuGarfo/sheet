@@ -110,7 +110,7 @@ class Sheet
       break;
     }
     @$writer->openToFile($sheet_name);
-    foreach ($data as $row) {
+    foreach ($array as $row) {
       $writer->addRow($row);
     }
     if (is_null($writer->close())) {
