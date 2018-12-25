@@ -8,6 +8,7 @@ namespace Basic;
 
 use Box\Spout\Reader\ReaderFactory;
 use Box\Spout\Common\Type;
+use Box\Spout\Writer\WriterFactory;
 
 /**
 * Classe Sheet
